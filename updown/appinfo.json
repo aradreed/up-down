@@ -23,6 +23,13 @@
           "type": "png",
           "name": "IMAGE_DOWN",
           "file": "images/down.png"
+        },
+        
+        {
+          "type": "png",
+          "name": "IMAGE_ICON",
+          "file": "images/icon.png",
+          "menuIcon": "True"
         }
     ]
   }
