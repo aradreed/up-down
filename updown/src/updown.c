@@ -8,6 +8,13 @@ static TextLayer *score_label;
 static TextLayer *high_score_label;
 static TextLayer *down_label;
 
+// Up and down images
+static BitmapLayer *up_image_layer;
+static GBitmap *up_image;
+static BitmapLayer *down_image_layer;
+static GBitmap *down_image;
+
+// Initial time to hit the correct button
 #define INITIAL_TIME 1000
 
 static struct GameState {
@@ -24,6 +31,9 @@ const int HIGH_SCORE_KEY = 1337;
 static void reset_labels() {
 	layer_set_hidden((Layer*) up_label, true);
 	layer_set_hidden((Layer*) down_label, true);
+	
+	layer_set_hidden((Layer*) up_image_layer, true);
+	layer_set_hidden((Layer*) down_image_layer, true);
 }
 
 static void set_score() {
@@ -61,10 +71,12 @@ static void timer_callback() {
 		// Set the correct label based on random number
 		if (state.direction == 1) {
 			layer_set_hidden((Layer*) up_label, false);
+			layer_set_hidden((Layer*) up_image_layer, false);
 		}
 	
 		else {
 			layer_set_hidden((Layer*) down_label, false);
+			layer_set_hidden((Layer*) down_image_layer, false);
 		}
 		
 		state.timeInterval -= 10;
@@ -72,7 +84,7 @@ static void timer_callback() {
 	}
 
 	else {
-		text_layer_set_text(text_layer, "Game over");
+		text_layer_set_text(text_layer, "Game over. Try again.");
 		reset_labels();
 		state.direction = 0;
 		state.isRunning = false;
@@ -160,30 +172,51 @@ static void window_load(Window *window) {
   text_layer_set_text_alignment(text_layer, GTextAlignmentCenter);
   layer_add_child(window_layer, text_layer_get_layer(text_layer));
   
+  // Up label and image
   up_label = text_layer_create((GRect) { .origin = { 0, 25 }, .size = { bounds.size.w, 20 } });
   text_layer_set_text(up_label, "Up");
   text_layer_set_text_alignment(up_label, GTextAlignmentCenter);
-  layer_set_hidden((Layer*) up_label, true);
   layer_add_child(window_layer, text_layer_get_layer(up_label));
   
-  down_label = text_layer_create((GRect) { .origin = { 0, 125 }, .size = { bounds.size.w, 20 } });
+  up_image = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_UP);
+
+  // The bitmap layer holds the image for display
+  up_image_layer = bitmap_layer_create((GRect) { .origin = { 0, 40 }, .size = { bounds.size.w, 20 } });
+  bitmap_layer_set_bitmap(up_image_layer, up_image);
+  bitmap_layer_set_alignment(up_image_layer, GAlignCenter);
+  layer_add_child(window_layer, bitmap_layer_get_layer(up_image_layer));
+  
+  // Down label and image
+  down_label = text_layer_create((GRect) { .origin = { 0, 130 }, .size = { bounds.size.w, 20 } });
   text_layer_set_text(down_label, "Down");
   text_layer_set_text_alignment(down_label, GTextAlignmentCenter);
-  layer_set_hidden((Layer*) down_label, true);
   layer_add_child(window_layer, text_layer_get_layer(down_label));
   
+  down_image = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_DOWN);
+
+  // The bitmap layer holds the image for display
+  down_image_layer = bitmap_layer_create((GRect) { .origin = { 0, 110 }, .size = { bounds.size.w, 20 } });
+  bitmap_layer_set_bitmap(down_image_layer, down_image);
+  bitmap_layer_set_alignment(down_image_layer, GAlignCenter);
+  layer_add_child(window_layer, bitmap_layer_get_layer(down_image_layer));
+  
+  // Score label
   score_label = text_layer_create((GRect) { .origin = { 0, 5 }, .size = { bounds.size.w, 20 } });
   text_layer_set_text_alignment(score_label, GTextAlignmentCenter);
   layer_add_child(window_layer, text_layer_get_layer(score_label));
   
+  // High score label
   high_score_label = text_layer_create((GRect) { .origin = { 0, 45 }, .size = { bounds.size.w, 20 } });
   text_layer_set_text_alignment(high_score_label, GTextAlignmentCenter);
+  
+  reset_labels();
 
 }
 
 static void window_unload(Window *window) {
   text_layer_destroy(text_layer);
   text_layer_destroy(score_label);
+  text_layer_destroy(high_score_label);
   text_layer_destroy(up_label);
   text_layer_destroy(down_label);
 }
@@ -201,6 +234,15 @@ static void init(void) {
 }
 
 static void deinit(void) {
+  
+  // Destroy up image
+  gbitmap_destroy(up_image);
+  bitmap_layer_destroy(up_image_layer);
+  
+  // Destroy down image
+  gbitmap_destroy(down_image);
+  bitmap_layer_destroy(down_image_layer);
+
   window_destroy(window);
 }
 
