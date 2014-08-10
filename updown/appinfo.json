@@ -16,13 +16,13 @@
             {
           "type": "png",
           "name": "IMAGE_UP",
-          "file": "./resources/up.png"
+          "file": "images/up.png"
         },
         
         {
           "type": "png",
           "name": "IMAGE_DOWN",
-          "file": "./resources/down.png"
+          "file": "images/down.png"
         }
     ]
   }
