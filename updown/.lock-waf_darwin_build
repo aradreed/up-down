@@ -1,0 +1,8 @@
+argv = ['/Users/Arad/pebble-dev/PebbleSDK-2.3/Pebble/waf', 'configure', 'build']
+environ = {'TERM_SESSION_ID': 'FFE7499B-DAE6-4093-9951-31F019CAFF72', 'SSH_AUTH_SOCK': '/tmp/launch-ucJOfK/Listeners', 'PYTHONPATH': '/Users/Arad/pebble-dev/PebbleSDK-current/bin/../.env/lib/python2.7/site-packages', 'VERSIONER_PYTHON_PREFER_32_BIT': 'no', 'TERM_PROGRAM_VERSION': '326', 'SHELL': '/bin/bash', 'LOGNAME': 'Arad', 'USER': 'Arad', 'HOME': '/Users/Arad', 'PATH': '/Users/Arad/pebble-dev/PebbleSDK-2.3/arm-cs-tools/bin:/Users/Arad/pebble-dev/PebbleSDK-current/bin:/Users/Arad/.apportable/SDK/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin', 'DISPLAY': '/tmp/launch-2zbJ1H/org.macosforge.xquartz:0', 'TMPDIR': '/var/folders/z4/5c6h_wjj6g30dhxnp7kjs9n00000gn/T/', 'TERM_PROGRAM': 'Apple_Terminal', 'LANG': 'en_US.UTF-8', 'TERM': 'xterm-256color', 'Apple_PubSub_Socket_Render': '/tmp/launch-3WG2zv/Render', 'VERSIONER_PYTHON_VERSION': '2.7', 'SHLVL': '1', 'OLDPWD': '/Users/Arad/Documents/pebbleApps', '__CF_USER_TEXT_ENCODING': '0x1F5:0:0', 'PWD': '/Users/Arad/Documents/pebbleApps/updown', '_': '/Users/Arad/pebble-dev/PebbleSDK-current/bin/pebble', 'GIT_MERGE_AUTOEDIT': 'no', '__CHECKFIX1436934': '1'}
+files = ['/Users/Arad/Documents/pebbleApps/updown/wscript']
+hash = 4672844372416070989
+options = {'files': '', 'jobs': 4, 'verbose': 0, 'nocache': False, 'progress_bar': 0, 'timestamp': None, 'distcheck_args': None, 'top': '', 'destdir': '', 'keep': 0, 'zones': '', 'debug': False, 'prefix': '/usr/local/', 'download': False, 'force': False, 'targets': '', 'out': ''}
+out_dir = '/Users/Arad/Documents/pebbleApps/updown/build'
+run_dir = '/Users/Arad/Documents/pebbleApps/updown'
+top_dir = '/Users/Arad/Documents/pebbleApps/updown'

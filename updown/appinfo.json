@@ -1,0 +1,29 @@
+{
+  "uuid": "6bb59ad3-c39a-4189-9049-099ca465d57e",
+  "shortName": "Up Down",
+  "longName": "Up Down",
+  "companyName": "Arad Reed",
+  "versionCode": 1,
+  "versionLabel": "1.0.0",
+  "watchapp": {
+    "watchface": false
+  },
+  "appKeys": {
+    "dummy": 0
+  },
+  "resources": {
+    "media": [
+            {
+          "type": "png",
+          "name": "IMAGE_UP",
+          "file": "./resources/up.png"
+        },
+        
+        {
+          "type": "png",
+          "name": "IMAGE_DOWN",
+          "file": "./resources/down.png"
+        }
+    ]
+  }
+}
